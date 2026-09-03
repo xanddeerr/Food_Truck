@@ -4,9 +4,6 @@ from .models import Producto
 
 def catalogo(request):
     productos = Producto.objects.all()
-    texto = "Catalogo\n\n"
-    for p in productos:
-        texto += f"{p.nombre} - "
-        texto += f"{p.categoria.nombre}\n"
-    return HttpResponse(texto,
-        content_type="text/plain; charset=utf-8")
+    return render(request,
+        "pedidos/catalogo.html",
+        {"productos": productos})
